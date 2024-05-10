@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <meta charset="utf-8" />
+
+	<meta name="description" content="Zerodha - India&#x27;s biggest stock broker offering the lowest, cheapest brokerage rates for futures and options, commodity trading, equity and mutual funds" />
+
+	<meta name="keywords" content="discount broker, discount brokerage, lowest brokerage commissions, lowest brokerage fees, indian discount brokerage, indian discount broker, cheap brokerage, discount brokerage bangalore, fixed brokerage bangalore, cheap trading, cheap commodity trading, trading terminal, futures trading, stock broker, fixed stock brokerage, cheapest brokerage, cheapest brokerage in india, online trading, online brokerage, cheap demat account, bangalore broker, commodities trading" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+-->
+<!-- Open Graph -->
+<!--
+<meta property="og:image" content="https://zerodha.com/static/images/landing.png" />
+
+	<meta property="og:description" content="Zerodha - India&#x27;s biggest stock broker offering the lowest, cheapest brokerage rates for futures and options, commodity trading, equity and mutual funds" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https:&#x2F;&#x2F;zerodha.com&#x2F;template&#x2F;" />
+
+<meta name="referrer" content="origin">
+-->
+
+	<title>F&amp;O margin calculator - Zerodha Margin Calculator</title>
+	<link rel="image_src" href="/static/images/landing.png" />
+	<link rel="icon" type="image/png" href="/static/images/favicon.png" />
+	<link href="https://fonts.googleapis.com/css?family=Inter:400,500" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://zerodha.com/static/css/bundle.min.css">
+
+    <script type="application/ld+json">
+    {
+        "@context" : "https://schema.org",
+        "@type" : "Organization",
+        "name" : "Zerodha",
+        "logo": "https://zerodha.com/static/images/logo.svg",
+        "description": "Zerodha - India's biggest stock broker offering the lowest, cheapest brokerage rates in the industry. We offer option trading, commodity brokerage, futures trading, brokerage, equity and mutual fund investing services in India",
+        "contactPoint" : [{
+            "@type" : "ContactPoint",
+            "telephone" : "+91 80 4040 2020",
+            "contactType" : "customer service"
+        }],
+        "url" : "https://zerodha.com/",
+        "sameAs" : [
+            "https://facebook.com/zerodha.social",
+            "https://twitter.com/zerodhaonline",
+            "https://youtube.com/user/zerodhaonline",
+            "https://linkedin.com/company/zerodha",
+            "https://instagram.com/zerodhaonline"
+        ]
+    }
+    </script>
+    <link href="https://zerodha.com/margin-calculator/public/style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar">
+    <div class="container">
+      <div class="nav-responsive row between">
+            <!-- <li class="hide-on-small signup-link">
+                <a class="nav-links" id="nav_acop" href="https://zerodha.com/open-account/">Sign up</a>
+              </li> -->
+              <li id="navbar_menu">
+              <!-- <div class="cursor-pointer" id="menu_btn" title="Menu"> -->
+                <!-- <div id="nav-icon3"> -->
+                  <!-- <span></span> -->
+                  <!-- <span></span> -->
+                  <!-- <span></span> -->
+                  <!-- <span></span> -->
+                <!-- </div> -->
+              <!-- </div> -->
+              <div id="menu" class="navbar-menu text-left">
+                <ul class="navbar-links show-on-mobile">
+                  <li class="nav-links">
+                    <a href="https://signup.zerodha.com">Signup</a>
+                  </li>
+                  <li class="hide-on-small">
+                    <a class="nav-links" id="nav_acop" href="https://zerodha.com/open-account/">Open account</a>
+                  </li>
+                  <li>
+                    <a class="nav-links" href="https://zerodha.com/about/">About</a>
+                  </li>
+                  <li>
+                    <a class="nav-links" href="https://zerodha.com/products/">Products</a>
+                  </li>
+                  <li>
+                    <a class="nav-links" href="https://zerodha.com/pricing/">Pricing</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://support.zerodha.com">Support</a>
+                  </li>
+                </ul>
+                <div class="row between v-align products-list">
+                  <div class="three columns">
+                    <a class="text-center" href="https:&#x2F;&#x2F;kite.zerodha.com">
+                      <img src="/static/images/products/kite-logo.svg" /><br class="hide-on-mobile" />
+                      <span>
+                        <strong>Kite</strong>
+                      </span>
+                      <br class="hide-on-small">
+                      <span class="text-light-grey text-12 hide-on-small">
+                        Trading platform
+                      </span>
+                    </a>
+                  </div>
+                  <div class="three columns">
+                    <a class="text-center" href="https:&#x2F;&#x2F;console.zerodha.com">
+                      <img src="/static/images/products/console.svg" /><br class="hide-on-mobile" />
+                      <span>
+                        <strong>Console</strong>
+                      </span>
+                      <br class="hide-on-small">
+                      <span class="text-light-grey text-12 hide-on-small">
+                        Backoffice
+                      </span>
+                    </a>
+                  </div>
+                  <div class="three columns">
+                    <a class="text-center" href="https://kite.trade">
+                      <img src="/static/images/products/kite-connect.svg" /><br class="hide-on-mobile" />
+                      <span>
+                        <strong>Kite Connect</strong>
+                      </span>
+                      <br class="hide-on-small">
+                      <span class="text-light-grey text-12 hide-on-small">
+                        Trading APIs
+                      </span>
+                    </a>
+                  </div>
+                  <div class="three columns">
+                    <a class="text-center" href="https://coin.zerodha.com">
+                      <img src="/static/images/products/coin.svg" /><br class="hide-on-mobile" />
+                      <span>
+                        <strong>Coin</strong>
+                      </span>
+                      <br class="hide-on-small">
+                      <span class="text-light-grey text-12 hide-on-small">
+                        Mutual funds
+                      </span>
+                    </a>
+                  </div>
+                  <div class="three columns show-on-mobile">
+                    <a href="https://zerodha.com/varsity/" class="text-center">
+                      <img class="nav-edu-img" src="/static/images/products/varsity.png" /><br />
+                      <span><strong>Varsity</strong></span>
+                    </a>
+                  </div>
+                  <div class="three columns show-on-mobile">
+                    <a href="https://tradingqna.com/" class="text-center">
+                      <img class="nav-edu-img" src="/static/images/products/tqna.png" /><br />
+                      <span><strong>Trading Q&amp;A</strong></span>
+                    </a>
+                  </div>
+                </div>
+                <div class="menu-footer">
+                  <div class="row between">
+                    <div class="seven columns">
+                      <div class="row between">
+                        <div class="six columns">
+                          <span><strong>Utilities</strong></span>
+                          <a href="https://zerodha.com/brokerage-calculator/">Brokerage calculator</a>
+                          <a href="https://zerodha.com/margin-calculator/">Margin calculator</a>
+                          <a href="https://zerodha.com/marketintel/holiday-calendar/">Holiday calendar</a>
+                        </div>
+                        <div class="six columns">
+                          <span><strong>Updates</strong></span>
+                          <a href="https://zerodha.com/z-connect/">Z-Connect blog</a>
+                          <a href="https://pulse.zerodha.com/">Pulse News</a>
+                          <a href="https://zerodha.com/marketintel/bulletin/">Circulars / Bulletin</a>
+                          <a href="https://zerodha.com/ipo/">IPOs</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="five columns education hide-on-small">
+                      <span><strong>Education</strong></span>
+                      <a href="https://zerodha.com/varsity/" class="text-center">
+                        <img src="/static/images/products/varsity.png" /><br />
+                        <span>Varsity</span>
+                      </a>
+                      <a href="https://tradingqna.com/" class="text-center">
+                        <img src="/static/images/products/tqna.png" /><br />
+                        <span>Trading Q&amp;A</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="show-on-mobile nav-mobile-signup">
+                  <!-- <a href="https://zerodha.com/open-account/">Sign up <i class="icon icon-arrow-right"></i></a> -->
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- nav items //-->
+      </div>
+    </div>
+  </nav>
+
+    <main class="content parent-content">
+        <div id="remove_container" class="container">
+          <script>var ROOT = "https://zerodha.com/margin-calculator/", MODULE = "SPAN";</script>
+
+<section class="page_header text-center">
+	<h1 class="page_headings">
+					F&amp;O margin calculator			
+	</h1>
+	<nav class="subnav">
+		<ul class="nostyle-list">
+							<li>
+					<a class="SPAN sel" href="https://zerodha.com/margin-calculator/SPAN/">F&amp;O</a>
+				</li>
+							<li>
+					<a class="Futures " href="https://zerodha.com/margin-calculator/Futures/">Equity futures</a>
+				</li>
+							<li>
+					<a class="Commodity " href="https://zerodha.com/margin-calculator/Commodity/">Commodity</a>
+				</li>
+							<li>
+					<a class="Currency " href="https://zerodha.com/margin-calculator/Currency/">Currency</a>
+				</li>
+							<li>
+					<a class="Equity " href="https://zerodha.com/margin-calculator/Equity/">Equity</a>
+				</li>
+					</ul>
+	</nav>
+</section>
+<div class="web-banner">
+<span class="close-banner">&#9932;</span>
+<div class="container">
+	<span>
+		As per the new peak margin rule, maximum intraday leverage is capped and only 80% of credit from selling your holdings will be available for new trades. Check <a href="https://zerodha.com/marketintel/bulletin/249809/latest-intraday-leverages-mis-bo-co">this bulletin</a> for details on intraday leverages offered. <a href="https://zerodha.com/z-connect/zerodha/bulletin-latest-at-zerodha/peak-margin-intraday-leverages-2nd-order-effects-dec-1st-2020">Read more</a>.
+	</span>
+</div>
+</div>
+
+<section class="margin-summary">
+	<div class="notice-margin">
+		<span>
+			Stock brokers can accept securities as margin from clients only by way of pledge in the depository system w.e.f. September 1, 2020.
+		</span>
+		<span>
+			Update your mobile number & e-mail ID with your stock broker/depository participant and receive OTP directly from depository on your email id and/or mobile number to create pledge.
+		</span>
+		<span>
+			Pay 20% upfront margin of the transaction value to trade in cash market segment.
+		</span>
+		<span>
+			Investors may please refer to the Exchange's Frequently Asked Questions (FAQs) issued vide notice no. 20200731-7 (BSE) and circular no. NSE/INSP/45191 (NSE) dated July 31, 2020 and 20200831-45 (BSE) and NSE/INSP/45534 (NSE) dated August 31, 2020 and other guidelines issued from time to time in this regard.
+		</span>
+		<span>
+			Check your Securities/MF/Bonds in the consolidated account statement issued by NSDL/CDSL every month.
+		</span>
+		<span>
+			Read more about MIS, NRML, and CO product types <a href="https://support.zerodha.com/category/trading-and-markets/margin-leverage-and-product-and-order-types/articles/product-types">here</a>.
+		</span>
+	</div>
+	<div class="row between">
+		<div class="three columns">
+			<span class="text-12">
+			<label class="text-12">
+				Securities under ban
+			</label>
+				<span style="color: red;">BALRAMCHIN, EXIDEIND, HINDCOPPER, IDEA, INDIACEM, NATIONALUM, SAIL, ZEEL</span>
+			</span>
+		</div>
+		<div class="three columns summary-border">
+			<span class="text-12">
+			<label class="text-12">
+				Bank Nifty contracts allowed for trading
+			</label>
+			
+					<strong>
+							16/04/2024-NRML:49200 to 49700 MIS:All strikes allowed <br>
+							24/04/2024-NRML:48200 to 48900 MIS:43800 to 53400 <br>
+							30/04/2024-NRML:48200 to 48900 MIS:43800 to 53400 <br>
+					</strong> 
+				<a href="https://support.zerodha.com/category/trading-and-markets/kite-web-and-mobile/articles/why-did-my-bank-nifty-option-order-get-rejected" target="_blank">More information</a>
+			</span>
+		</div>
+		<div class="three columns summary-border">
+		<span class="text-12">
+			<label class="text-12">
+				Nifty contracts allowed for trading
+			</label>
+					
+						<strong>
+								18/04/2024 -NRML:22200 to 22850 MIS:All strikes allowed <br>
+								25/04/2024 -NRML:22200 to 22850 MIS:20300 to 24750 <br>
+								02/05/2024 -NRML:22200 to 22850 MIS:20300 to 24750 <br>
+						</strong>
+					</span>
+		</div>
+		<div class="three columns summary-border">
+			<span class="text-12">
+			<label class="text-12">
+				Finnifty contracts allowed for trading
+			</label>
+					<strong> 
+							16/04/2024-NRML:21100 to 21900 MIS:All strikes with OI over 500 lots allowed <br>
+							30/04/2024-NRML:19400 to 23600 MIS:All strikes with OI over 500 lots allowed <br>
+					</strong> 
+					<a href="https://support.zerodha.com/category/trading-and-markets/kite-web-and-mobile/kite-error-messages/articles/mis-blocked-for-finnifty" target="_blank">More information</a>
+			</span>
+		</div>
+	</div>
+</section>
+
+<section id="span" class="last-section">
+	<div class="head">
+		<form method="post" action="" id="form-span">
+			<div>
+				<span class="field exchange">
+					<label for="exchange">Exchange</label
+					
+					<select class="in changer" name="exchange[]" id="exchange">
+						<option value="NFO" data-show="#span .product">NFO</option>
+						<option value="BFO" data-show="#span .product">BFO</option>
+						<option value="MCX" data-show="#span .product">MCX</option>
+						<option value="CDS" data-show="#span .product">CDS</option>
+					</select>
+				</span>
+				<span class="field product">
+					<label for="product">Product</label>
+					<select class="in changer" name="product[]" id="product">
+						<option data-name="Futures" value="FUT" data-hide="#span .option_type, #span .strike">Futures</option>
+						<option data-name="Options" value="OPT" data-show="#span .option_type, #span .strike">Options</option>
+					</select>
+				</span>
+				<div class="clear"> </div>
+
+				<span class="field scrip">
+					<label for="scrip">Symbol</label>
+					<select class="in" name="scrip[]" id="scrip">
+					</select>
+				</span>
+				<div class="clear"> </div>
+
+				<p class="field option_type">
+					<label for="option_type">Option type</label>
+					<select class="in" name="option_type[]" id="option_type">
+						<option data-name="Puts" value="CE">Calls</option>
+						<option data-name="Calls" value="PE">Puts</option>
+					</select>
+				</span>
+				<p class="field strike">
+					<label for="strike">Strike price</label>
+					<input type="text" class="in" name="strike_price[]" id="strike_price" />
+				</span>
+				<div class="clear"> </div>
+
+				<p class="field s">
+					<label for="qty">Net quantity <span id="lot_size">(Lot size <span class="val"></span>)</span></label>
+					<input type="text" class="in" name="qty[]" id="qty" maxlength="6" />
+
+					<label class="s"><input type="radio" name="trade[]" class="trade trade-buy" value="buy" checked />Buy</label>
+					<label class="s"><input type="radio" name="trade[]" class="trade trade-sell" value="sell" />Sell</label>
+				</span>
+
+				<p class="field">
+					<label>&nbsp;</label>
+					<input type="submit" value="Add" class="button" />
+					<input type="button" value="Reset" class="button" id="reset" />
+				</span>>
+
+				<div class="clear"> </div>
+			</div>
+		</form>
+
+		<div id="tally">
+			<h4>
+				Combined margin requirements
+			</h4>
+			<span>
+				<label>Span</label>
+				<span class="val span">0</span>
+			</span>
+			<span>
+				<label>Exposure margin</label>
+				<span class="val exposure">0</span>
+			</span>
+			<p class="invis spread">
+				<label class="tip" data-tip="Reduction in margin because of hedged positions">Spread benefit <span class="q">?</span></label>
+				<span class="val">0</span>
+			</span>
+			<p class="invis netoptionvalue">
+				<label class="tip" data-tip="Premium that will get credited for short selling the option. The tool calculates the receivable based on previous day closing price of the option.">Premium receivable <span class="q">?</span></label>
+				<span class="val">0</span>
+			</span>
+			<span>
+				<!-- <label class="tip" data-tip="Total margin = (SPAN + Exposure) - Spread Benefit<br><br> Margin required to take overnight position using product type as NRML. For MIS, margin required for index &amp; stock contracts is 35% & 45% of Total margin respectively. Commodity & currency it is 50%.">Total margin <span class="q">?</span></label>
+				<label class="tip" data-tip="Total margin = (SPAN + Exposure) - Spread Benefit<br><br> Margin required to take overnight position using product type as NRML. For MIS, margin required for index &amp; stock contracts is 35% & 45% of Total margin respectively. Commodity & currency it is 50%.">Total margin <span class="q">?</span></label> -->
+
+				<label class="tip" data-tip="Total margin = (SPAN + Exposure) - Spread Benefit<br><br> This is the margin required for taking positions that can also be held overnight using NRML product type. Click to know the additional leverage offered for intraday product types - MIS, BO, CO">Total margin <a href="https://zerodha.com/marketintel/bulletin/249809/latest-intraday-leverages-mis-bo-co" target="_blank"><span class="q">?</span></a></label>
+				<span class="val total">0</span>
+			</span>
+			<p class="mbenefit invis">
+				Margin benefit
+				<span class="val benefit"></span>
+			</span>
+			<div class="clear"> </div>
+		</div>
+		<div class="clear"> </div>
+	</div><!-- head //-->
+
+	<div id="header-container" class="table_container">
+		<table id="table-span" class="inviss data">
+			<thead>
+				<th>Exchange</th>
+				<th>Contract</th>
+				<th>Product</th>
+				<th class="text-right">Strike</th>
+				<th class="text-right">Qty</th>
+				<th class="text-right">
+					Initial margin
+					<span class="tip" data-tip="Buying options require full premium and not margins. Hence premium values to buy options don't show up here.">
+						<span class="icon icon-info-circled-alt"></span>
+					</span>
+				</th>
+				<th class="text-right">Exposure</th>
+				<th class="text-right">Total</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="texchange"><div class="exchange"></div></td>
+					<td class="scrip"></td>
+					<td class="product_name"></td>
+					<td class="strike_price text-right"></td>
+					<td class="qty text-right"></td>
+					<td class="span text-right"></td>
+					<td class="exposure text-right"></td>
+					<td class="total text-right"></td>
+				</tr>
+			</tbody>
+			<tfoot class="invis">
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th>Total</th>
+				<th class="total"></th>
+			</tfoot>
+		</table>
+	</div>
+
+	<p class="micromini-container">
+		The Zerodha F&amp;O calculator is the first online tool in India that let's you calculate comprehensive margin requirements
+		for option writing/shorting or for multi-leg F&amp;O strategies while trading equity, F&amp;O, commodity and currency
+		before taking a trade. No more taking trades just to figure out the margin that will be blocked!
+	</span>
+	<p class="micromini-container">
+		The new SEBI circular mandates brokers to collect the complete SPAN + Exposure margin to carry forward Futures and Options positions to the next day. Make sure to have sufficient margins to avoid margin penalty and square off of open positions from today. <a href="https://support.zerodha.com/category/trading-and-markets/trading-faqs/articles/full-margin-requirement">More information</a>
+	</span>
+	<p class="micromini-container">
+		*Buying options require full premium and not margins. Hence premium values to buy options don't show up in the above F&amp;O margin calculator. Adding buying option positions might have margin benefits on futures and short option positions which will show up above.
+		<br /><br />
+		<strong>Have queries?</strong> If you have queries regarding the calculator, please <a href="http://zerodha.com/z-connect/queries/stock-and-fo-queries/zerodha-span-calculator">click here</a>.
+	</span>
+
+	<div class="clear"> </div>
+</section>
+
+<!-- for search in symbol dropdown -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+
+<script>
+	var FUTURES = [["AARTIIND24APR","AARTIIND 25-APR-2024",1000],["AARTIIND24JUN","AARTIIND 27-JUN-2024",1000],["AARTIIND24MAY","AARTIIND 30-MAY-2024",1000],["ABB24APR","ABB 25-APR-2024",125],["ABB24JUN","ABB 27-JUN-2024",125],["ABB24MAY","ABB 30-MAY-2024",125],["ABBOTINDIA24APR","ABBOTINDIA 25-APR-2024",40],["ABBOTINDIA24JUN","ABBOTINDIA 27-JUN-2024",40],["ABBOTINDIA24MAY","ABBOTINDIA 30-MAY-2024",40],["ABCAPITAL24APR","ABCAPITAL 25-APR-2024",5400],["ABCAPITAL24JUN","ABCAPITAL 27-JUN-2024",5400],["ABCAPITAL24MAY","ABCAPITAL 30-MAY-2024",5400],["ABFRL24APR","ABFRL 25-APR-2024",2600],["ABFRL24JUN","ABFRL 27-JUN-2024",2600],["ABFRL24MAY","ABFRL 30-MAY-2024",2600],["ACC24APR","ACC 25-APR-2024",300],["ACC24JUN","ACC 27-JUN-2024",300],["ACC24MAY","ACC 30-MAY-2024",300],["ADANIENT24APR","ADANIENT 25-APR-2024",300],["ADANIENT24JUN","ADANIENT 27-JUN-2024",300],["ADANIENT24MAY","ADANIENT 30-MAY-2024",300],["ADANIPORTS24APR","ADANIPORTS 25-APR-2024",800],["ADANIPORTS24JUN","ADANIPORTS 27-JUN-2024",800],["ADANIPORTS24MAY","ADANIPORTS 30-MAY-2024",800],["ALKEM24APR","ALKEM 25-APR-2024",200],["ALKEM24JUN","ALKEM 27-JUN-2024",200],["ALKEM24MAY","ALKEM 30-MAY-2024",200],["AMBUJACEM24APR","AMBUJACEM 25-APR-2024",1800],["AMBUJACEM24JUN","AMBUJACEM 27-JUN-2024",1800],["AMBUJACEM24MAY","AMBUJACEM 30-MAY-2024",1800],["APOLLOHOSP24APR","APOLLOHOSP 25-APR-2024",125],["APOLLOHOSP24JUN","APOLLOHOSP 27-JUN-2024",125],["APOLLOHOSP24MAY","APOLLOHOSP 30-MAY-2024",125],["APOLLOTYRE24APR","APOLLOTYRE 25-APR-2024",1700],["APOLLOTYRE24JUN","APOLLOTYRE 27-JUN-2024",1700],["APOLLOTYRE24MAY","APOLLOTYRE 30-MAY-2024",1700],["ASHOKLEY24APR","ASHOKLEY 25-APR-2024",5000],["ASHOKLEY24JUN","ASHOKLEY 27-JUN-2024",5000],["ASHOKLEY24MAY","ASHOKLEY 30-MAY-2024",5000],["ASIANPAINT24APR","ASIANPAINT 25-APR-2024",200],["ASIANPAINT24JUN","ASIANPAINT 27-JUN-2024",200],["ASIANPAINT24MAY","ASIANPAINT 30-MAY-2024",200],["ASTRAL24APR","ASTRAL 25-APR-2024",367],["ASTRAL24JUN","ASTRAL 27-JUN-2024",367],["ASTRAL24MAY","ASTRAL 30-MAY-2024",367],["ATUL24APR","ATUL 25-APR-2024",75],["ATUL24JUN","ATUL 27-JUN-2024",75],["ATUL24MAY","ATUL 30-MAY-2024",75],["AUBANK24APR","AUBANK 25-APR-2024",1000],["AUBANK24JUN","AUBANK 27-JUN-2024",1000],["AUBANK24MAY","AUBANK 30-MAY-2024",1000],["AUROPHARMA24APR","AUROPHARMA 25-APR-2024",1100],["AUROPHARMA24JUN","AUROPHARMA 27-JUN-2024",1100],["AUROPHARMA24MAY","AUROPHARMA 30-MAY-2024",1100],["AXISBANK24APR","AXISBANK 25-APR-2024",625],["AXISBANK24JUN","AXISBANK 27-JUN-2024",625],["AXISBANK24MAY","AXISBANK 30-MAY-2024",625],["BAJAJ-AUTO24APR","BAJAJ-AUTO 25-APR-2024",125],["BAJAJ-AUTO24JUN","BAJAJ-AUTO 27-JUN-2024",125],["BAJAJ-AUTO24MAY","BAJAJ-AUTO 30-MAY-2024",125],["BAJAJFINSV24APR","BAJAJFINSV 25-APR-2024",500],["BAJAJFINSV24JUN","BAJAJFINSV 27-JUN-2024",500],["BAJAJFINSV24MAY","BAJAJFINSV 30-MAY-2024",500],["BAJFINANCE24APR","BAJFINANCE 25-APR-2024",125],["BAJFINANCE24JUN","BAJFINANCE 27-JUN-2024",125],["BAJFINANCE24MAY","BAJFINANCE 30-MAY-2024",125],["BALKRISIND24APR","BALKRISIND 25-APR-2024",300],["BALKRISIND24JUN","BALKRISIND 27-JUN-2024",300],["BALKRISIND24MAY","BALKRISIND 30-MAY-2024",300],["BALRAMCHIN24APR","BALRAMCHIN 25-APR-2024",1600],["BALRAMCHIN24JUN","BALRAMCHIN 27-JUN-2024",1600],["BALRAMCHIN24MAY","BALRAMCHIN 30-MAY-2024",1600],["BANDHANBNK24APR","BANDHANBNK 25-APR-2024",2500],["BANDHANBNK24JUN","BANDHANBNK 27-JUN-2024",2500],["BANDHANBNK24MAY","BANDHANBNK 30-MAY-2024",2500],["BANKBARODA24APR","BANKBARODA 25-APR-2024",2925],["BANKBARODA24JUN","BANKBARODA 27-JUN-2024",2925],["BANKBARODA24MAY","BANKBARODA 30-MAY-2024",2925],["BANKEX24APR","BANKEX 29-APR-2024",15],["BANKNIFTY24APR","BANKNIFTY 24-APR-2024",15],["BANKNIFTY24JUN","BANKNIFTY 26-JUN-2024",15],["BANKNIFTY24MAY","BANKNIFTY 29-MAY-2024",15],["BATAINDIA24APR","BATAINDIA 25-APR-2024",375],["BATAINDIA24JUN","BATAINDIA 27-JUN-2024",375],["BATAINDIA24MAY","BATAINDIA 30-MAY-2024",375],["BEL24APR","BEL 25-APR-2024",5700],["BEL24JUN","BEL 27-JUN-2024",5700],["BEL24MAY","BEL 30-MAY-2024",5700],["BERGEPAINT24APR","BERGEPAINT 25-APR-2024",1320],["BERGEPAINT24JUN","BERGEPAINT 27-JUN-2024",1320],["BERGEPAINT24MAY","BERGEPAINT 30-MAY-2024",1320],["BHARATFORG24APR","BHARATFORG 25-APR-2024",500],["BHARATFORG24JUN","BHARATFORG 27-JUN-2024",500],["BHARATFORG24MAY","BHARATFORG 30-MAY-2024",500],["BHARTIARTL24APR","BHARTIARTL 25-APR-2024",950],["BHARTIARTL24JUN","BHARTIARTL 27-JUN-2024",950],["BHARTIARTL24MAY","BHARTIARTL 30-MAY-2024",950],["BHEL24APR","BHEL 25-APR-2024",5250],["BHEL24JUN","BHEL 27-JUN-2024",5250],["BHEL24MAY","BHEL 30-MAY-2024",5250],["BIOCON24APR","BIOCON 25-APR-2024",2500],["BIOCON24JUN","BIOCON 27-JUN-2024",2500],["BIOCON24MAY","BIOCON 30-MAY-2024",2500],["BOSCHLTD24APR","BOSCHLTD 25-APR-2024",50],["BOSCHLTD24JUN","BOSCHLTD 27-JUN-2024",50],["BOSCHLTD24MAY","BOSCHLTD 30-MAY-2024",50],["BPCL24APR","BPCL 25-APR-2024",1800],["BPCL24JUN","BPCL 27-JUN-2024",1800],["BPCL24MAY","BPCL 30-MAY-2024",1800],["BRITANNIA24APR","BRITANNIA 25-APR-2024",200],["BRITANNIA24JUN","BRITANNIA 27-JUN-2024",200],["BRITANNIA24MAY","BRITANNIA 30-MAY-2024",200],["BSOFT24APR","BSOFT 25-APR-2024",1000],["BSOFT24JUN","BSOFT 27-JUN-2024",1000],["BSOFT24MAY","BSOFT 30-MAY-2024",1000],["CANBK24APR","CANBK 25-APR-2024",2700],["CANBK24JUN","CANBK 27-JUN-2024",2700],["CANBK24MAY","CANBK 30-MAY-2024",2700],["CANFINHOME24APR","CANFINHOME 25-APR-2024",975],["CANFINHOME24JUN","CANFINHOME 27-JUN-2024",975],["CANFINHOME24MAY","CANFINHOME 30-MAY-2024",975],["CHAMBLFERT24APR","CHAMBLFERT 25-APR-2024",1900],["CHAMBLFERT24JUN","CHAMBLFERT 27-JUN-2024",1900],["CHAMBLFERT24MAY","CHAMBLFERT 30-MAY-2024",1900],["CHOLAFIN24APR","CHOLAFIN 25-APR-2024",625],["CHOLAFIN24JUN","CHOLAFIN 27-JUN-2024",625],["CHOLAFIN24MAY","CHOLAFIN 30-MAY-2024",625],["CIPLA24APR","CIPLA 25-APR-2024",650],["CIPLA24JUN","CIPLA 27-JUN-2024",650],["CIPLA24MAY","CIPLA 30-MAY-2024",650],["COALINDIA24APR","COALINDIA 25-APR-2024",2100],["COALINDIA24JUN","COALINDIA 27-JUN-2024",2100],["COALINDIA24MAY","COALINDIA 30-MAY-2024",2100],["COFORGE24APR","COFORGE 25-APR-2024",150],["COFORGE24JUN","COFORGE 27-JUN-2024",150],["COFORGE24MAY","COFORGE 30-MAY-2024",150],["COLPAL24APR","COLPAL 25-APR-2024",350],["COLPAL24JUN","COLPAL 27-JUN-2024",350],["COLPAL24MAY","COLPAL 30-MAY-2024",350],["CONCOR24APR","CONCOR 25-APR-2024",1000],["CONCOR24JUN","CONCOR 27-JUN-2024",1000],["CONCOR24MAY","CONCOR 30-MAY-2024",1000],["COROMANDEL24APR","COROMANDEL 25-APR-2024",700],["COROMANDEL24JUN","COROMANDEL 27-JUN-2024",700],["COROMANDEL24MAY","COROMANDEL 30-MAY-2024",700],["CROMPTON24APR","CROMPTON 25-APR-2024",1800],["CROMPTON24JUN","CROMPTON 27-JUN-2024",1800],["CROMPTON24MAY","CROMPTON 30-MAY-2024",1800],["CUB24APR","CUB 25-APR-2024",5000],["CUB24JUN","CUB 27-JUN-2024",5000],["CUB24MAY","CUB 30-MAY-2024",5000],["CUMMINSIND24APR","CUMMINSIND 25-APR-2024",300],["CUMMINSIND24JUN","CUMMINSIND 27-JUN-2024",300],["CUMMINSIND24MAY","CUMMINSIND 30-MAY-2024",300],["DABUR24APR","DABUR 25-APR-2024",1250],["DABUR24JUN","DABUR 27-JUN-2024",1250],["DABUR24MAY","DABUR 30-MAY-2024",1250],["DALBHARAT24APR","DALBHARAT 25-APR-2024",250],["DALBHARAT24JUN","DALBHARAT 27-JUN-2024",250],["DALBHARAT24MAY","DALBHARAT 30-MAY-2024",250],["DEEPAKNTR24APR","DEEPAKNTR 25-APR-2024",300],["DEEPAKNTR24JUN","DEEPAKNTR 27-JUN-2024",300],["DEEPAKNTR24MAY","DEEPAKNTR 30-MAY-2024",300],["DIVISLAB24APR","DIVISLAB 25-APR-2024",200],["DIVISLAB24JUN","DIVISLAB 27-JUN-2024",200],["DIVISLAB24MAY","DIVISLAB 30-MAY-2024",200],["DIXON24APR","DIXON 25-APR-2024",100],["DIXON24JUN","DIXON 27-JUN-2024",100],["DIXON24MAY","DIXON 30-MAY-2024",100],["DLF24APR","DLF 25-APR-2024",1650],["DLF24JUN","DLF 27-JUN-2024",1650],["DLF24MAY","DLF 30-MAY-2024",1650],["DRREDDY24APR","DRREDDY 25-APR-2024",125],["DRREDDY24JUN","DRREDDY 27-JUN-2024",125],["DRREDDY24MAY","DRREDDY 30-MAY-2024",125],["EICHERMOT24APR","EICHERMOT 25-APR-2024",175],["EICHERMOT24JUN","EICHERMOT 27-JUN-2024",175],["EICHERMOT24MAY","EICHERMOT 30-MAY-2024",175],["ESCORTS24APR","ESCORTS 25-APR-2024",275],["ESCORTS24JUN","ESCORTS 27-JUN-2024",275],["ESCORTS24MAY","ESCORTS 30-MAY-2024",275],["EXIDEIND24APR","EXIDEIND 25-APR-2024",3600],["EXIDEIND24JUN","EXIDEIND 27-JUN-2024",3600],["EXIDEIND24MAY","EXIDEIND 30-MAY-2024",3600],["FEDERALBNK24APR","FEDERALBNK 25-APR-2024",5000],["FEDERALBNK24JUN","FEDERALBNK 27-JUN-2024",5000],["FEDERALBNK24MAY","FEDERALBNK 30-MAY-2024",5000],["FINNIFTY24APR","FINNIFTY 30-APR-2024",40],["FINNIFTY24JUN","FINNIFTY 25-JUN-2024",40],["FINNIFTY24MAY","FINNIFTY 28-MAY-2024",40],["GAIL24APR","GAIL 25-APR-2024",4575],["GAIL24JUN","GAIL 27-JUN-2024",4575],["GAIL24MAY","GAIL 30-MAY-2024",4575],["GLENMARK24APR","GLENMARK 25-APR-2024",725],["GLENMARK24JUN","GLENMARK 27-JUN-2024",725],["GLENMARK24MAY","GLENMARK 30-MAY-2024",725],["GMRINFRA24APR","GMRINFRA 25-APR-2024",11250],["GMRINFRA24JUN","GMRINFRA 27-JUN-2024",11250],["GMRINFRA24MAY","GMRINFRA 30-MAY-2024",11250],["GNFC24APR","GNFC 25-APR-2024",1300],["GNFC24JUN","GNFC 27-JUN-2024",1300],["GNFC24MAY","GNFC 30-MAY-2024",1300],["GODREJCP24APR","GODREJCP 25-APR-2024",500],["GODREJCP24JUN","GODREJCP 27-JUN-2024",500],["GODREJCP24MAY","GODREJCP 30-MAY-2024",500],["GODREJPROP24APR","GODREJPROP 25-APR-2024",475],["GODREJPROP24JUN","GODREJPROP 27-JUN-2024",475],["GODREJPROP24MAY","GODREJPROP 30-MAY-2024",475],["GRANULES24APR","GRANULES 25-APR-2024",2000],["GRANULES24JUN","GRANULES 27-JUN-2024",2000],["GRANULES24MAY","GRANULES 30-MAY-2024",2000],["GRASIM24APR","GRASIM 25-APR-2024",477],["GRASIM24JUN","GRASIM 27-JUN-2024",477],["GRASIM24MAY","GRASIM 30-MAY-2024",477],["GUJGASLTD24APR","GUJGASLTD 25-APR-2024",1250],["GUJGASLTD24JUN","GUJGASLTD 27-JUN-2024",1250],["GUJGASLTD24MAY","GUJGASLTD 30-MAY-2024",1250],["HAL24APR","HAL 25-APR-2024",300],["HAL24JUN","HAL 27-JUN-2024",300],["HAL24MAY","HAL 30-MAY-2024",300],["HAVELLS24APR","HAVELLS 25-APR-2024",500],["HAVELLS24JUN","HAVELLS 27-JUN-2024",500],["HAVELLS24MAY","HAVELLS 30-MAY-2024",500],["HCLTECH24APR","HCLTECH 25-APR-2024",700],["HCLTECH24JUN","HCLTECH 27-JUN-2024",700],["HCLTECH24MAY","HCLTECH 30-MAY-2024",700],["HDFCAMC24APR","HDFCAMC 25-APR-2024",300],["HDFCAMC24JUN","HDFCAMC 27-JUN-2024",300],["HDFCAMC24MAY","HDFCAMC 30-MAY-2024",300],["HDFCBANK24APR","HDFCBANK 25-APR-2024",550],["HDFCBANK24JUN","HDFCBANK 27-JUN-2024",550],["HDFCBANK24MAY","HDFCBANK 30-MAY-2024",550],["HDFCLIFE24APR","HDFCLIFE 25-APR-2024",1100],["HDFCLIFE24JUN","HDFCLIFE 27-JUN-2024",1100],["HDFCLIFE24MAY","HDFCLIFE 30-MAY-2024",1100],["HEROMOTOCO24APR","HEROMOTOCO 25-APR-2024",300],["HEROMOTOCO24JUN","HEROMOTOCO 27-JUN-2024",300],["HEROMOTOCO24MAY","HEROMOTOCO 30-MAY-2024",300],["HINDALCO24APR","HINDALCO 25-APR-2024",1400],["HINDALCO24JUN","HINDALCO 27-JUN-2024",1400],["HINDALCO24MAY","HINDALCO 30-MAY-2024",1400],["HINDCOPPER24APR","HINDCOPPER 25-APR-2024",5300],["HINDCOPPER24JUN","HINDCOPPER 27-JUN-2024",5300],["HINDCOPPER24MAY","HINDCOPPER 30-MAY-2024",5300],["HINDPETRO24APR","HINDPETRO 25-APR-2024",2700],["HINDPETRO24JUN","HINDPETRO 27-JUN-2024",2700],["HINDPETRO24MAY","HINDPETRO 30-MAY-2024",2700],["HINDUNILVR24APR","HINDUNILVR 25-APR-2024",300],["HINDUNILVR24JUN","HINDUNILVR 27-JUN-2024",300],["HINDUNILVR24MAY","HINDUNILVR 30-MAY-2024",300],["ICICIBANK24APR","ICICIBANK 25-APR-2024",700],["ICICIBANK24JUN","ICICIBANK 27-JUN-2024",700],["ICICIBANK24MAY","ICICIBANK 30-MAY-2024",700],["ICICIGI24APR","ICICIGI 25-APR-2024",500],["ICICIGI24JUN","ICICIGI 27-JUN-2024",500],["ICICIGI24MAY","ICICIGI 30-MAY-2024",500],["ICICIPRULI24APR","ICICIPRULI 25-APR-2024",1500],["ICICIPRULI24JUN","ICICIPRULI 27-JUN-2024",1500],["ICICIPRULI24MAY","ICICIPRULI 30-MAY-2024",1500],["IDEA24APR","IDEA 25-APR-2024",80000],["IDEA24JUN","IDEA 27-JUN-2024",80000],["IDEA24MAY","IDEA 30-MAY-2024",80000],["IDFC24APR","IDFC 25-APR-2024",5000],["IDFC24JUN","IDFC 27-JUN-2024",5000],["IDFC24MAY","IDFC 30-MAY-2024",5000],["IDFCFIRSTB24APR","IDFCFIRSTB 25-APR-2024",7500],["IDFCFIRSTB24JUN","IDFCFIRSTB 27-JUN-2024",7500],["IDFCFIRSTB24MAY","IDFCFIRSTB 30-MAY-2024",7500],["IEX24APR","IEX 25-APR-2024",3750],["IEX24JUN","IEX 27-JUN-2024",3750],["IEX24MAY","IEX 30-MAY-2024",3750],["IGL24APR","IGL 25-APR-2024",1375],["IGL24JUN","IGL 27-JUN-2024",1375],["IGL24MAY","IGL 30-MAY-2024",1375],["INDHOTEL24APR","INDHOTEL 25-APR-2024",2000],["INDHOTEL24JUN","INDHOTEL 27-JUN-2024",2000],["INDHOTEL24MAY","INDHOTEL 30-MAY-2024",2000],["INDIACEM24APR","INDIACEM 25-APR-2024",2900],["INDIACEM24JUN","INDIACEM 27-JUN-2024",2900],["INDIACEM24MAY","INDIACEM 30-MAY-2024",2900],["INDIAMART24APR","INDIAMART 25-APR-2024",300],["INDIAMART24JUN","INDIAMART 27-JUN-2024",300],["INDIAMART24MAY","INDIAMART 30-MAY-2024",300],["INDIGO24APR","INDIGO 25-APR-2024",300],["INDIGO24JUN","INDIGO 27-JUN-2024",300],["INDIGO24MAY","INDIGO 30-MAY-2024",300],["INDUSINDBK24APR","INDUSINDBK 25-APR-2024",500],["INDUSINDBK24JUN","INDUSINDBK 27-JUN-2024",500],["INDUSINDBK24MAY","INDUSINDBK 30-MAY-2024",500],["INDUSTOWER24APR","INDUSTOWER 25-APR-2024",3400],["INDUSTOWER24JUN","INDUSTOWER 27-JUN-2024",3400],["INDUSTOWER24MAY","INDUSTOWER 30-MAY-2024",3400],["INFY24APR","INFY 25-APR-2024",400],["INFY24JUN","INFY 27-JUN-2024",400],["INFY24MAY","INFY 30-MAY-2024",400],["IOC24APR","IOC 25-APR-2024",9750],["IOC24JUN","IOC 27-JUN-2024",9750],["IOC24MAY","IOC 30-MAY-2024",9750],["IPCALAB24APR","IPCALAB 25-APR-2024",650],["IPCALAB24JUN","IPCALAB 27-JUN-2024",650],["IPCALAB24MAY","IPCALAB 30-MAY-2024",650],["IRCTC24APR","IRCTC 25-APR-2024",875],["IRCTC24JUN","IRCTC 27-JUN-2024",875],["IRCTC24MAY","IRCTC 30-MAY-2024",875],["ITC24APR","ITC 25-APR-2024",1600],["ITC24JUN","ITC 27-JUN-2024",1600],["ITC24MAY","ITC 30-MAY-2024",1600],["JINDALSTEL24APR","JINDALSTEL 25-APR-2024",1250],["JINDALSTEL24JUN","JINDALSTEL 27-JUN-2024",1250],["JINDALSTEL24MAY","JINDALSTEL 30-MAY-2024",1250],["JKCEMENT24APR","JKCEMENT 25-APR-2024",250],["JKCEMENT24JUN","JKCEMENT 27-JUN-2024",250],["JKCEMENT24MAY","JKCEMENT 30-MAY-2024",250],["JSWSTEEL24APR","JSWSTEEL 25-APR-2024",675],["JSWSTEEL24JUN","JSWSTEEL 27-JUN-2024",675],["JSWSTEEL24MAY","JSWSTEEL 30-MAY-2024",675],["JUBLFOOD24APR","JUBLFOOD 25-APR-2024",1250],["JUBLFOOD24JUN","JUBLFOOD 27-JUN-2024",1250],["JUBLFOOD24MAY","JUBLFOOD 30-MAY-2024",1250],["KOTAKBANK24APR","KOTAKBANK 25-APR-2024",400],["KOTAKBANK24JUN","KOTAKBANK 27-JUN-2024",400],["KOTAKBANK24MAY","KOTAKBANK 30-MAY-2024",400],["L&TFH24APR","L&TFH 25-APR-2024",4462],["L&TFH24JUN","L&TFH 27-JUN-2024",4462],["L&TFH24MAY","L&TFH 30-MAY-2024",4462],["LALPATHLAB24APR","LALPATHLAB 25-APR-2024",300],["LALPATHLAB24JUN","LALPATHLAB 27-JUN-2024",300],["LALPATHLAB24MAY","LALPATHLAB 30-MAY-2024",300],["LAURUSLABS24APR","LAURUSLABS 25-APR-2024",1700],["LAURUSLABS24JUN","LAURUSLABS 27-JUN-2024",1700],["LAURUSLABS24MAY","LAURUSLABS 30-MAY-2024",1700],["LICHSGFIN24APR","LICHSGFIN 25-APR-2024",2000],["LICHSGFIN24JUN","LICHSGFIN 27-JUN-2024",2000],["LICHSGFIN24MAY","LICHSGFIN 30-MAY-2024",2000],["LT24APR","LT 25-APR-2024",300],["LT24JUN","LT 27-JUN-2024",300],["LT24MAY","LT 30-MAY-2024",300],["LTIM24APR","LTIM 25-APR-2024",150],["LTIM24JUN","LTIM 27-JUN-2024",150],["LTIM24MAY","LTIM 30-MAY-2024",150],["LTTS24APR","LTTS 25-APR-2024",200],["LTTS24JUN","LTTS 27-JUN-2024",200],["LTTS24MAY","LTTS 30-MAY-2024",200],["LUPIN24APR","LUPIN 25-APR-2024",850],["LUPIN24JUN","LUPIN 27-JUN-2024",850],["LUPIN24MAY","LUPIN 30-MAY-2024",850],["M&M24APR","M&M 25-APR-2024",350],["M&M24JUN","M&M 27-JUN-2024",350],["M&M24MAY","M&M 30-MAY-2024",350],["M&MFIN24APR","M&MFIN 25-APR-2024",2000],["M&MFIN24JUN","M&MFIN 27-JUN-2024",2000],["M&MFIN24MAY","M&MFIN 30-MAY-2024",2000],["MANAPPURAM24APR","MANAPPURAM 25-APR-2024",6000],["MANAPPURAM24JUN","MANAPPURAM 27-JUN-2024",6000],["MANAPPURAM24MAY","MANAPPURAM 30-MAY-2024",6000],["MARICO24APR","MARICO 25-APR-2024",1200],["MARICO24JUN","MARICO 27-JUN-2024",1200],["MARICO24MAY","MARICO 30-MAY-2024",1200],["MARUTI24APR","MARUTI 25-APR-2024",50],["MARUTI24JUN","MARUTI 27-JUN-2024",50],["MARUTI24MAY","MARUTI 30-MAY-2024",50],["MCDOWELL-N24APR","MCDOWELL-N 25-APR-2024",700],["MCDOWELL-N24JUN","MCDOWELL-N 27-JUN-2024",700],["MCDOWELL-N24MAY","MCDOWELL-N 30-MAY-2024",700],["MCX24APR","MCX 25-APR-2024",400],["MCX24JUN","MCX 27-JUN-2024",400],["MCX24MAY","MCX 30-MAY-2024",400],["METROPOLIS24APR","METROPOLIS 25-APR-2024",400],["METROPOLIS24JUN","METROPOLIS 27-JUN-2024",400],["METROPOLIS24MAY","METROPOLIS 30-MAY-2024",400],["MFSL24APR","MFSL 25-APR-2024",800],["MFSL24JUN","MFSL 27-JUN-2024",800],["MFSL24MAY","MFSL 30-MAY-2024",800],["MGL24APR","MGL 25-APR-2024",800],["MGL24JUN","MGL 27-JUN-2024",800],["MGL24MAY","MGL 30-MAY-2024",800],["MIDCPNIFTY24APR","MIDCPNIFTY 29-APR-2024",75],["MIDCPNIFTY24JUN","MIDCPNIFTY 24-JUN-2024",75],["MIDCPNIFTY24MAY","MIDCPNIFTY 27-MAY-2024",75],["MOTHERSON24APR","MOTHERSON 25-APR-2024",7100],["MOTHERSON24JUN","MOTHERSON 27-JUN-2024",7100],["MOTHERSON24MAY","MOTHERSON 30-MAY-2024",7100],["MPHASIS24APR","MPHASIS 25-APR-2024",275],["MPHASIS24JUN","MPHASIS 27-JUN-2024",275],["MPHASIS24MAY","MPHASIS 30-MAY-2024",275],["MRF24APR","MRF 25-APR-2024",5],["MRF24JUN","MRF 27-JUN-2024",5],["MRF24MAY","MRF 30-MAY-2024",5],["MUTHOOTFIN24APR","MUTHOOTFIN 25-APR-2024",550],["MUTHOOTFIN24JUN","MUTHOOTFIN 27-JUN-2024",550],["MUTHOOTFIN24MAY","MUTHOOTFIN 30-MAY-2024",550],["NATIONALUM24APR","NATIONALUM 25-APR-2024",7500],["NATIONALUM24JUN","NATIONALUM 27-JUN-2024",7500],["NATIONALUM24MAY","NATIONALUM 30-MAY-2024",7500],["NAUKRI24APR","NAUKRI 25-APR-2024",150],["NAUKRI24JUN","NAUKRI 27-JUN-2024",150],["NAUKRI24MAY","NAUKRI 30-MAY-2024",150],["NAVINFLUOR24APR","NAVINFLUOR 25-APR-2024",150],["NAVINFLUOR24JUN","NAVINFLUOR 27-JUN-2024",150],["NAVINFLUOR24MAY","NAVINFLUOR 30-MAY-2024",150],["NESTLEIND24APR","NESTLEIND 25-APR-2024",400],["NESTLEIND24JUN","NESTLEIND 27-JUN-2024",400],["NESTLEIND24MAY","NESTLEIND 30-MAY-2024",400],["NIFTY24APR","NIFTY 25-APR-2024",50],["NIFTY24JUN","NIFTY 27-JUN-2024",50],["NIFTY24MAY","NIFTY 30-MAY-2024",50],["NMDC24APR","NMDC 25-APR-2024",4500],["NMDC24JUN","NMDC 27-JUN-2024",4500],["NMDC24MAY","NMDC 30-MAY-2024",4500],["NTPC24APR","NTPC 25-APR-2024",3000],["NTPC24JUN","NTPC 27-JUN-2024",3000],["NTPC24MAY","NTPC 30-MAY-2024",3000],["OBEROIRLTY24APR","OBEROIRLTY 25-APR-2024",700],["OBEROIRLTY24JUN","OBEROIRLTY 27-JUN-2024",700],["OBEROIRLTY24MAY","OBEROIRLTY 30-MAY-2024",700],["OFSS24APR","OFSS 25-APR-2024",200],["OFSS24JUN","OFSS 27-JUN-2024",200],["OFSS24MAY","OFSS 30-MAY-2024",200],["ONGC24APR","ONGC 25-APR-2024",3850],["ONGC24JUN","ONGC 27-JUN-2024",3850],["ONGC24MAY","ONGC 30-MAY-2024",3850],["PAGEIND24APR","PAGEIND 25-APR-2024",15],["PAGEIND24JUN","PAGEIND 27-JUN-2024",15],["PAGEIND24MAY","PAGEIND 30-MAY-2024",15],["PEL24APR","PEL 25-APR-2024",750],["PEL24JUN","PEL 27-JUN-2024",750],["PEL24MAY","PEL 30-MAY-2024",750],["PERSISTENT24APR","PERSISTENT 25-APR-2024",200],["PERSISTENT24JUN","PERSISTENT 27-JUN-2024",200],["PERSISTENT24MAY","PERSISTENT 30-MAY-2024",200],["PETRONET24APR","PETRONET 25-APR-2024",3000],["PETRONET24JUN","PETRONET 27-JUN-2024",3000],["PETRONET24MAY","PETRONET 30-MAY-2024",3000],["PFC24APR","PFC 25-APR-2024",3875],["PFC24JUN","PFC 27-JUN-2024",3875],["PFC24MAY","PFC 30-MAY-2024",3875],["PIDILITIND24APR","PIDILITIND 25-APR-2024",250],["PIDILITIND24JUN","PIDILITIND 27-JUN-2024",250],["PIDILITIND24MAY","PIDILITIND 30-MAY-2024",250],["PIIND24APR","PIIND 25-APR-2024",250],["PIIND24JUN","PIIND 27-JUN-2024",250],["PIIND24MAY","PIIND 30-MAY-2024",250],["PNB24APR","PNB 25-APR-2024",8000],["PNB24JUN","PNB 27-JUN-2024",8000],["PNB24MAY","PNB 30-MAY-2024",8000],["POLYCAB24APR","POLYCAB 25-APR-2024",100],["POLYCAB24JUN","POLYCAB 27-JUN-2024",100],["POLYCAB24MAY","POLYCAB 30-MAY-2024",100],["POWERGRID24APR","POWERGRID 25-APR-2024",3600],["POWERGRID24JUN","POWERGRID 27-JUN-2024",3600],["POWERGRID24MAY","POWERGRID 30-MAY-2024",3600],["PVRINOX24APR","PVRINOX 25-APR-2024",407],["PVRINOX24JUN","PVRINOX 27-JUN-2024",407],["PVRINOX24MAY","PVRINOX 30-MAY-2024",407],["RAMCOCEM24APR","RAMCOCEM 25-APR-2024",850],["RAMCOCEM24JUN","RAMCOCEM 27-JUN-2024",850],["RAMCOCEM24MAY","RAMCOCEM 30-MAY-2024",850],["RBLBANK24APR","RBLBANK 25-APR-2024",2500],["RBLBANK24JUN","RBLBANK 27-JUN-2024",2500],["RBLBANK24MAY","RBLBANK 30-MAY-2024",2500],["RECLTD24APR","RECLTD 25-APR-2024",2000],["RECLTD24JUN","RECLTD 27-JUN-2024",2000],["RECLTD24MAY","RECLTD 30-MAY-2024",2000],["RELIANCE24APR","RELIANCE 25-APR-2024",250],["RELIANCE24JUN","RELIANCE 27-JUN-2024",250],["RELIANCE24MAY","RELIANCE 30-MAY-2024",250],["SAIL24APR","SAIL 25-APR-2024",8000],["SAIL24JUN","SAIL 27-JUN-2024",8000],["SAIL24MAY","SAIL 30-MAY-2024",8000],["SBICARD24APR","SBICARD 25-APR-2024",800],["SBICARD24JUN","SBICARD 27-JUN-2024",800],["SBICARD24MAY","SBICARD 30-MAY-2024",800],["SBILIFE24APR","SBILIFE 25-APR-2024",750],["SBILIFE24JUN","SBILIFE 27-JUN-2024",750],["SBILIFE24MAY","SBILIFE 30-MAY-2024",750],["SBIN24APR","SBIN 25-APR-2024",1500],["SBIN24JUN","SBIN 27-JUN-2024",1500],["SBIN24MAY","SBIN 30-MAY-2024",1500],["SENSEX24APR","SENSEX 26-APR-2024",10],["SHREECEM24APR","SHREECEM 25-APR-2024",25],["SHREECEM24JUN","SHREECEM 27-JUN-2024",25],["SHREECEM24MAY","SHREECEM 30-MAY-2024",25],["SHRIRAMFIN24APR","SHRIRAMFIN 25-APR-2024",300],["SHRIRAMFIN24JUN","SHRIRAMFIN 27-JUN-2024",300],["SHRIRAMFIN24MAY","SHRIRAMFIN 30-MAY-2024",300],["SIEMENS24APR","SIEMENS 25-APR-2024",150],["SIEMENS24JUN","SIEMENS 27-JUN-2024",150],["SIEMENS24MAY","SIEMENS 30-MAY-2024",150],["SRF24APR","SRF 25-APR-2024",375],["SRF24JUN","SRF 27-JUN-2024",375],["SRF24MAY","SRF 30-MAY-2024",375],["SUNPHARMA24APR","SUNPHARMA 25-APR-2024",700],["SUNPHARMA24JUN","SUNPHARMA 27-JUN-2024",700],["SUNPHARMA24MAY","SUNPHARMA 30-MAY-2024",700],["SUNTV24APR","SUNTV 25-APR-2024",1500],["SUNTV24JUN","SUNTV 27-JUN-2024",1500],["SUNTV24MAY","SUNTV 30-MAY-2024",1500],["SYNGENE24APR","SYNGENE 25-APR-2024",1000],["SYNGENE24JUN","SYNGENE 27-JUN-2024",1000],["SYNGENE24MAY","SYNGENE 30-MAY-2024",1000],["TATACHEM24APR","TATACHEM 25-APR-2024",550],["TATACHEM24JUN","TATACHEM 27-JUN-2024",550],["TATACHEM24MAY","TATACHEM 30-MAY-2024",550],["TATACOMM24APR","TATACOMM 25-APR-2024",500],["TATACOMM24JUN","TATACOMM 27-JUN-2024",500],["TATACOMM24MAY","TATACOMM 30-MAY-2024",500],["TATACONSUM24APR","TATACONSUM 25-APR-2024",900],["TATACONSUM24JUN","TATACONSUM 27-JUN-2024",900],["TATACONSUM24MAY","TATACONSUM 30-MAY-2024",900],["TATAMOTORS24APR","TATAMOTORS 25-APR-2024",1425],["TATAMOTORS24JUN","TATAMOTORS 27-JUN-2024",1425],["TATAMOTORS24MAY","TATAMOTORS 30-MAY-2024",1425],["TATAPOWER24APR","TATAPOWER 25-APR-2024",3375],["TATAPOWER24JUN","TATAPOWER 27-JUN-2024",3375],["TATAPOWER24MAY","TATAPOWER 30-MAY-2024",3375],["TATASTEEL24APR","TATASTEEL 25-APR-2024",5500],["TATASTEEL24JUN","TATASTEEL 27-JUN-2024",5500],["TATASTEEL24MAY","TATASTEEL 30-MAY-2024",5500],["TCS24APR","TCS 25-APR-2024",175],["TCS24JUN","TCS 27-JUN-2024",175],["TCS24MAY","TCS 30-MAY-2024",175],["TECHM24APR","TECHM 25-APR-2024",600],["TECHM24JUN","TECHM 27-JUN-2024",600],["TECHM24MAY","TECHM 30-MAY-2024",600],["TITAN24APR","TITAN 25-APR-2024",175],["TITAN24JUN","TITAN 27-JUN-2024",175],["TITAN24MAY","TITAN 30-MAY-2024",175],["TORNTPHARM24APR","TORNTPHARM 25-APR-2024",500],["TORNTPHARM24JUN","TORNTPHARM 27-JUN-2024",500],["TORNTPHARM24MAY","TORNTPHARM 30-MAY-2024",500],["TRENT24APR","TRENT 25-APR-2024",400],["TRENT24JUN","TRENT 27-JUN-2024",400],["TRENT24MAY","TRENT 30-MAY-2024",400],["TVSMOTOR24APR","TVSMOTOR 25-APR-2024",350],["TVSMOTOR24JUN","TVSMOTOR 27-JUN-2024",350],["TVSMOTOR24MAY","TVSMOTOR 30-MAY-2024",350],["UBL24APR","UBL 25-APR-2024",400],["UBL24JUN","UBL 27-JUN-2024",400],["UBL24MAY","UBL 30-MAY-2024",400],["ULTRACEMCO24APR","ULTRACEMCO 25-APR-2024",100],["ULTRACEMCO24JUN","ULTRACEMCO 27-JUN-2024",100],["ULTRACEMCO24MAY","ULTRACEMCO 30-MAY-2024",100],["UPL24APR","UPL 25-APR-2024",1300],["UPL24JUN","UPL 27-JUN-2024",1300],["UPL24MAY","UPL 30-MAY-2024",1300],["VEDL24APR","VEDL 25-APR-2024",2300],["VEDL24JUN","VEDL 27-JUN-2024",2300],["VEDL24MAY","VEDL 30-MAY-2024",2300],["VOLTAS24APR","VOLTAS 25-APR-2024",600],["VOLTAS24JUN","VOLTAS 27-JUN-2024",600],["VOLTAS24MAY","VOLTAS 30-MAY-2024",600],["WIPRO24APR","WIPRO 25-APR-2024",1500],["WIPRO24JUN","WIPRO 27-JUN-2024",1500],["WIPRO24MAY","WIPRO 30-MAY-2024",1500],["ZEEL24APR","ZEEL 25-APR-2024",3000],["ZEEL24JUN","ZEEL 27-JUN-2024",3000],["ZEEL24MAY","ZEEL 30-MAY-2024",3000],["ZYDUSLIFE24APR","ZYDUSLIFE 25-APR-2024",900],["ZYDUSLIFE24JUN","ZYDUSLIFE 27-JUN-2024",900],["ZYDUSLIFE24MAY","ZYDUSLIFE 30-MAY-2024",900],["BANKNIFTY24MAY","BANKNIFTY 08-MAY-2024",15],["FINNIFTY24MAY","FINNIFTY 14-MAY-2024",40],["FINNIFTY24MAY","FINNIFTY 07-MAY-2024",40],["SENSEX24MAY","SENSEX 10-MAY-2024",10],["SENSEX24MAY","SENSEX 03-MAY-2024",10],["SENSEX24APR","SENSEX 19-APR-2024",10],["NIFTY24APR","NIFTY 18-APR-2024",50],["BANKNIFTY24APR","BANKNIFTY 30-APR-2024",15],["NIFTY24MAY","NIFTY 09-MAY-2024",50],["NIFTY24MAY","NIFTY 16-MAY-2024",50],["MIDCPNIFTY24APR","MIDCPNIFTY 22-APR-2024",75],["FINNIFTY24APR","FINNIFTY 16-APR-2024",40],["MIDCPNIFTY24APR","MIDCPNIFTY 15-APR-2024",75],["MIDCPNIFTY24MAY","MIDCPNIFTY 13-MAY-2024",75],["NIFTY24MAY","NIFTY 02-MAY-2024",50],["MIDCPNIFTY24MAY","MIDCPNIFTY 06-MAY-2024",75],["SENSEX24APR","SENSEX 12-APR-2024",10],["FINNIFTY24APR","FINNIFTY 23-APR-2024",40],["BANKNIFTY24APR","BANKNIFTY 16-APR-2024",15],["SENSEX24MAY","SENSEX 24-MAY-2024",10],["SENSEX24MAY","SENSEX 17-MAY-2024",10],["BANKNIFTY24MAY","BANKNIFTY 15-MAY-2024",15]],
+		COMMODITIES = [["ALUMINI24APR","ALUMINI 30-APR-24",1],["ALUMINI24MAY","ALUMINI 31-MAY-24",1],["ALUMINIUM24APR","ALUMINIUM 30-APR-24",5],["ALUMINIUM24MAY","ALUMINIUM 31-MAY-24",5],["COPPER24APR","COPPER 30-APR-24",2500],["COPPER24MAY","COPPER 31-MAY-24",2500],["COTTONCNDY24APR","COTTONCNDY 30-APR-24",48],["COTTONCNDY24MAY","COTTONCNDY 31-MAY-24",48],["CRUDEOIL24APR","CRUDEOIL 19-APR-24",100],["CRUDEOIL24MAY","CRUDEOIL 20-MAY-24",100],["CRUDEOIL24APR","CRUDEOIL 17-APR-24",100],["CRUDEOILM24APR","CRUDEOILM 19-APR-24",10],["CRUDEOILM24MAY","CRUDEOILM 20-MAY-24",10],["GOLD24JUN","GOLD 05-JUN-24",1],["GOLD24AUG","GOLD 05-AUG-24",1],["GOLDGUINEA24APR","GOLDGUINEA 30-APR-24",8],["GOLDGUINEA24MAY","GOLDGUINEA 31-MAY-24",8],["GOLDM24MAY","GOLDM 03-MAY-24",100],["GOLDM24JUN","GOLDM 05-JUN-24",100],["GOLDPETAL24APR","GOLDPETAL 30-APR-24",1],["GOLDPETAL24MAY","GOLDPETAL 31-MAY-24",1],["LEAD24APR","LEAD 30-APR-24",5],["LEAD24MAY","LEAD 31-MAY-24",5],["LEADMINI24APR","LEADMINI 30-APR-24",1],["LEADMINI24MAY","LEADMINI 31-MAY-24",1],["MENTHAOIL24APR","MENTHAOIL 30-APR-24",360],["MENTHAOIL24MAY","MENTHAOIL 31-MAY-24",360],["MCXBULLDEX24APR","MCXBULLDEX 24-APR-24",50],["MCXBULLDEX24MAY","MCXBULLDEX 27-MAY-24",50],["MCXMETLDEX24APR","MCXMETLDEX 19-APR-24",50],["MCXMETLDEX24MAY","MCXMETLDEX 22-MAY-24",50],["NATURALGAS24APR","NATURALGAS 25-APR-24",1250],["NATURALGAS24MAY","NATURALGAS 28-MAY-24",1250],["NATGASMINI24APR","NATGASMINI 25-APR-24",250],["NATGASMINI24MAY","NATGASMINI 28-MAY-24",250],["NICKEL24APR","NICKEL 30-APR-24",1500],["NICKEL24MAY","NICKEL 31-MAY-24",1500],["SILVER24MAY","SILVER 03-MAY-24",30],["SILVER24JUL","SILVER 05-JUL-24",30],["SILVER24APR","SILVER 24-APR-24",30],["SILVERM24APR","SILVERM 30-APR-24",5],["SILVERM24JUN","SILVERM 28-JUN-24",5],["SILVERM24AUG","SILVERM 30-AUG-24",5],["SILVERM24APR","SILVERM 19-APR-24",5],["SILVERMIC24APR","SILVERMIC 30-APR-24",1],["SILVERMIC24JUN","SILVERMIC 28-JUN-24",1],["ZINC24APR","ZINC 30-APR-24",5],["ZINC24MAY","ZINC 31-MAY-24",5],["ZINCMINI24APR","ZINCMINI 30-APR-24",1],["ZINCMINI24MAY","ZINCMINI 31-MAY-24",1]],
+		CURRENCIES = [["EURINR24MAY","EURINR May 2024",1],["EURINR24JUN","EURINR Jun 2024",1],["JPYINR24APR","JPYINR Apr 2024",1],["JPYINR24JUN","JPYINR Jun 2024",1],["EURINR24APR","EURINR Apr 2024",1],["GBPINR24APR","GBPINR Apr 2024",1],["GBPINR24MAY","GBPINR May 2024",1],["USDINR24MAY","USDINR May 2024",1],["USDINR24JUN","USDINR Jun 2024",1],["GBPINR24JUN","GBPINR Jun 2024",1],["JPYINR24MAY","JPYINR May 2024",1],["USDINR24APR","USDINR Apr 2024",1]],
+		OPTION_INTERVALS = [];
+</script>
+
+        </div>
+    </main>
+    <!-- scripts -->
+<script type="text/javascript" src="/static/js/navbar.js"></script>
+<script type="text/javascript" src="/static/js/tinytabs.min.js"></script>
+<script type="text/javascript" src="/static/js/tooltip.js"></script>
+<script type="text/javascript" src="https://zerodha.com/zerodha.referral.js"></script>
+
+<!-- Page specific scripts -->
+
+
+<script type="text/javascript" src="/static/js/analytics.js"></script>
+
+<noscript><span><img src="//matomo.zerodha.net/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></span></noscript>
+
+
+<footer id="footer">
+	<div class="container">
+	  <div class="row between main-footer">
+		<div class="columns three">
+		  <div class="footer-logo">
+			<img src="/static/images/logo.svg" alt="" />
+		  </div>
+
+		  <!-- <h5 class="contactnumber"><i class="icon-phone"></i>+91 80 4718 1888</h5> -->
+		  <p class="copyright text-grey">© 2010 - 2024, Zerodha Broking Ltd.</span>
+		  <p class="copyright text-grey">All rights reserved.</span>
+		  <ul class="social">
+			<li>
+			  <a target="_blank" href="https://twitter.com/zerodhaonline">
+				<img src="/static/images/x-twitter.svg" alt="">
+			  </a>
+			</li>
+			<li>
+			  <a target="_blank" href="https://facebook.com/zerodha.social"><i class="icon-facebook-official"></i></a>
+			</li>
+			<li>
+			  <a target="_blank" href="https://instagram.com/zerodhaonline/"><i class="icon-instagram"></i></a>
+			</li>
+			<li>
+			  <a target="_blank" href="https://linkedin.com/company/zerodha">
+				<i class="icon-linkedin"></i>
+			  </a>
+			</li>
+			<li>
+			  <a target="_blank" href="https://t.me/zerodhain">
+				<i class="icon-telegram"></i>
+			  </a>
+			</li>
+			<li>
+				<a target="_blank" href="https://www.youtube.com/@zerodhaonline">
+					<img class="youtube-logo" src="/static/images/youtube.svg" alt="">
+				</a>
+			</li>
+		</ul>
+		</div>
+		<div class="columns three">
+		  <ul class="list-style">
+			<li class="nav-head">Company</li>
+			<li><a href="https://zerodha.com/about/">About</a></li>
+			<li><a href="https://zerodha.com/products/">Products</a></li>
+			<li><a href="https://zerodha.com/pricing/">Pricing</a></li>
+			<li>
+			  <a href="https://zerodha.com/refer/">Referral programme</a>
+			</li>
+			<li><a href="https://careers.zerodha.com">Careers</a></li>
+			<li><a href="https://zerodha.tech">Zerodha.tech</a></li>
+			<li><a href="https://zerodha.com/media/">Press &amp; media</a></li>
+			<li><a href="https://zerodha.com/cares/">Zerodha Cares (CSR)</a></li>
+		  </ul>
+		</div>
+		<div class="columns three">
+		  <ul class="list-style">
+			<li class="nav-head">Support</li>
+			<li><a href="https://zerodha.com/contact/">Contact us</a></li>
+			<li>
+			  <a href="https://support.zerodha.com">Support portal</a>
+			</li>
+			<li><a href="https://zerodha.com/z-connect/">Z-Connect blog</a></li>
+			<li><a href="https://zerodha.com/charges/">List of charges</a></li>
+			<li>
+			  <a href="https://zerodha.com/resources/">Downloads &amp; resources</a>
+			</li>
+			<li>
+				<a href="/videos">Videos</a>
+			</li>
+		  	<li>
+			  <a href="https://stocks.zerodha.com">Market overview</a>
+			</li>
+			<li>
+				<a target="_blank" href="https://support.zerodha.com/category/your-zerodha-account/your-profile/ticket-creation/articles/how-do-i-create-a-ticket-at-zerodha">How to file a complaint?</a>
+			</li>
+			<li>
+				<a target="_blank" href="https://support.zerodha.com/category/your-zerodha-account/your-profile/ticket-creation/articles/track-complaints-or-tickets">Status of your complaints</a>
+			</li>
+		  </ul>
+		</div>
+		<div class="columns three">
+		  <ul class="list-style">
+			<li class="nav-head">Account</li>
+			<li>
+			  <a href="https://zerodha.com/open-account/">Open an account</a>
+			</li>
+			<li>
+			  <a href="https://zerodha.com/fund-transfer/">Fund transfer</a>
+			</li>
+		  </ul>
+		</div>
+	  </div>
+
+	  <div class="row smallprint">
+		<span>
+		  Zerodha Broking Ltd.: Member of NSE, BSE​ &amp;​ MCX &ndash; SEBI
+		  Registration no.: INZ000031633 CDSL/NSDL: Depository services through Zerodha Broking Ltd. &ndash; SEBI Registration no.: IN-DP-431-2019
+		  Commodity Trading through Zerodha Commodities Pvt. Ltd. MCX: 46025; NSE-50001
+		  &ndash; SEBI Registration no.: INZ000038238 Registered Address: Zerodha
+		  Broking Ltd., #153/154, 4th Cross, Dollars Colony, Opp. Clarence Public
+		  School, J.P Nagar 4th Phase, Bengaluru - 560078, Karnataka, India. For
+		  any complaints pertaining to securities broking please write to
+		  <a href="/cdn-cgi/l/email-protection#f89b979588949991968c8bb8829d8a979c9099d69b9795"><span class="__cf_email__" data-cfemail="b1d2dedcc1ddd0d8dfc5c2f1cbd4c3ded5d9d09fd2dedc">[email&#160;protected]</span></a>, for
+		  DP related to <a href="/cdn-cgi/l/email-protection#422632023827302d262a236c212d2f"><span class="__cf_email__" data-cfemail="432733033926312c272b226d202c2e">[email&#160;protected]</span></a>. Please
+		  ensure you carefully read the Risk Disclosure Document as prescribed by
+		  SEBI | ICF
+		</span>
+		<span>
+		  Procedure to file a complaint on <a href="https://scores.gov.in/scores/Welcome.html" target="_blank">SEBI SCORES</a>:
+		  Register on SCORES portal. Mandatory details for filing complaints on SCORES: Name, PAN, Address, Mobile Number,
+		  E-mail ID.
+		  Benefits: Effective Communication, Speedy redressal of the grievances
+		</span>
+		<span>
+			<a href="https://smartodr.in/" target="_blank">Smart Online Dispute Resolution</a>
+		</span>
+		<span>
+		  Investments in securities market are subject to market risks; read all the related documents carefully before investing.
+		</span>
+		<span>
+		  Attention investors: 1) Stock brokers can accept securities as margins from clients only by way of pledge in the depository system w.e.f September 01, 2020. 2) Update your e-mail and phone number with your stock broker / depository participant and receive OTP directly from depository on your e-mail and/or mobile number to create pledge. 3) Check your securities / MF / bonds in the consolidated account statement issued by NSDL/CDSL every month.
+		</span>
+		<span>
+		  "Prevent unauthorised transactions in your account. Update your mobile
+		  numbers/email IDs with your stock brokers. Receive information of your
+		  transactions directly from Exchange on your mobile/email at the end of
+		  the day. Issued in the interest of investors. KYC is one time exercise
+		  while dealing in securities markets - once KYC is done through a SEBI
+		  registered intermediary (broker, DP, Mutual Fund etc.), you need not
+		  undergo the same process again when you approach another intermediary."
+		  Dear Investor, if you are subscribing to an IPO, there is no need to
+		  issue a cheque. Please write the Bank account number and sign the IPO
+		  application form to authorize your bank to make payment in case of
+		  allotment. In case of non allotment the funds will remain in your bank
+		  account. As a business we don't give stock tips, and have not authorized
+		  anyone to trade on behalf of others. If you find anyone claiming to be
+		  part of Zerodha and offering such services, please
+		  <a
+			href="https://support.zerodha.com/category/your-zerodha-account/your-profile/articles/how-do-i-place-a-complaint-at-zerodha">create
+			a ticket here</a>.
+		</span>
+	  </div>
+	  <div class="footer-graveyard-links text-center">
+		<ul>
+		  <li>
+			<a href="https://nseindia.com">NSE</a>
+		  </li>
+		  <li>
+			<a href="https://www.bseindia.com/">BSE</a>
+		  </li>
+		  <li>
+			<a href="https://www.mcxindia.com/">MCX</a>
+		  </li>
+		  <li>
+			<a href="https://zerodha.com/terms-and-conditions/">Terms &amp; conditions</a>
+		  </li>
+		  <li>
+			<a href="https://zerodha.com/policies-and-procedures/">Policies &amp; procedures</a>
+		  </li>
+		  <li>
+			<a href="https://zerodha.com/privacy-policy/">Privacy policy</a>
+		  </li>
+		  <li>
+			<a href="https://zerodha.com/disclosure/">Disclosure</a>
+		  </li>
+		  <li>
+			<a href="https://zerodha.com/investor-attention/">For investor's attention</a>
+		  </li>
+		  <li>
+			<a href="https://zerodha.com/tos/investor-charter/">Investor charter</a>
+		  </li>
+		</ul>
+	  </div>
+	</div>
+  </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://zerodha.com/margin-calculator/public/lib.js" type="text/javascript"></script>
+<script src="https://zerodha.com/margin-calculator/public/margincalc.js" type="text/javascript"></script>
+    </body>
+</html>
